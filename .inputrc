@@ -1,0 +1,23 @@
+### bell-style的取值范围是：none, visible, audible
+set bell-style none
+
+### All of the following map the escape sequence of the value contained
+### inside the 1st argument to the readline specific functions.
+
+### {C, M} - {left, right}
+"\e[1;5D": backward-word    ### C-left
+"\e[1;3D": backward-word    ### M-left
+"\e[1;5C": forward-word     ### C-right
+"\e[1;3C": forward-word     ### M-right
+
+### {C, M} - {home, end}
+"\e[1;5H": beginning-of-line   ### C-home
+"\e[1;3H": beginning-of-line   ### M-home
+"\e[1;5F": end-of-line         ### C-end
+"\e[1;3F": end-of-line         ### M-end
+
+### {C, M} - {backspace, delete}
+"\e[z5c": backward-kill-word    ### C-backspace
+"\e[z3c": backward-kill-word    ### M-backspace
+"\e[3;5~": kill-word            ### C-delete
+"\e[3;3~": kill-word            ### M-delete
