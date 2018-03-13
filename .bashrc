@@ -6,26 +6,29 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
-TOOLS=/home/wangsongOCR/Documents/tools
-
+TOOLS=/home/chenli/Documents/tools
 
 ### PATH settings
 export PATH=/usr/local/bin:$PATH
 export PATH=$TOOLS/anaconda/bin:$PATH
+export PATH=$TOOLS/clang/bin:$PATH
 export PATH=$TOOLS/emacs/bin:$PATH
-
+export PATH=$TOOLS/paralell/bin:$PATH
+export PATH=$TOOLS/protobuf/bin:$PATH
 
 ### LD_LIBRARY_PATH settings
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$TOOLS/anaconda/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$TOOLS/clang/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$TOOLS/protobuf/lib:$LD_LIBRARY_PATH
 
-
-### emacs settings
+### command settings
 export TERM=xterm-256color
 export no_proxy=127.0.0.1
 alias startemacs="emacs --daemon"
 alias killemacs="emacsclient -e '(kill-emacs)'"
 alias ls='ls --color=auto'
+alias sh='/bin/bash'
 
 ### open file while checking if it exists
 e() {
@@ -57,4 +60,24 @@ ev() {
     fi
 }
 
-export PYTHONPATH=/home/wangsongOCR/Desktop/caffe/python:$PYTHONPATH
+### avoid unintentional removal
+rm() {
+    recycle="/home/chenli/.recycle"
+    for i in $*; do
+        if [[ $i != -* ]]; then
+            stamp=`date +%Y-%m-%d`
+            mkdir -p ${recycle}/${stamp}
+            ### avoid conflict of name
+            name=`basename $i`
+            path=${recycle}/${stamp}/${name}
+            count=2
+            while [ -e ${path} ]; do
+                path=${recycle}/${stamp}/${name}.${count}
+                count=$((count + 1))
+            done
+            mv $i ${path}
+        fi
+    done
+}
+
+export PYTHONPATH=/home/chenli/Desktop/caffe/python:$PYTHONPATH
