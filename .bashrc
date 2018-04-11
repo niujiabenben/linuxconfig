@@ -32,7 +32,6 @@ alias sh='/bin/bash'
 ip=`ifconfig | grep 'inet addr' | cut -d: -f2 | awk '{print $1}' | head -n1`
 PS1="\u@${ip}:\w$ "
 
-
 ### open file while checking if it exists
 e() {
     if [ $# -eq 0 ]; then
@@ -70,7 +69,7 @@ rm() {
         if [[ $i != -* ]]; then
             stamp=`date +%Y-%m-%d`
             mkdir -p ${recycle}/${stamp}
-            ### avoid conflict of name
+            ### avoid name conflict
             name=`basename $i`
             path=${recycle}/${stamp}/${name}
             count=2
@@ -79,8 +78,12 @@ rm() {
                 count=$((count + 1))
             done
             mv $i ${path}
+            ### unlink if necessary
+            if [ -d ${path} ]; then
+                if [ `find ${path} -type l | wc -l` -gt 0 ]; then
+                    find ${path} -type l | xargs -n1 unlink
+                fi
+            fi
         fi
     done
 }
-
-export PYTHONPATH=/home/chenli/Desktop/caffe/python:$PYTHONPATH
