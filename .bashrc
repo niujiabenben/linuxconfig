@@ -29,7 +29,7 @@ alias startemacs="emacs --daemon"
 alias killemacs="emacsclient -e '(kill-emacs)'"
 alias ls='ls --color=auto'
 alias sh='/bin/bash'
-ip=`ifconfig | grep 'inet addr' | cut -d: -f2 | awk '{print $1}' | head -n1`
+ip=`ifconfig | grep 'inet addr' | cut -d: -f2 | awk '{print $1}' | grep -v '127.0.0.1' | head -n1`
 PS1="\u@${ip}:\w$ "
 
 ### open file while checking if it exists
