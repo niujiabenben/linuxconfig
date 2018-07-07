@@ -1,9 +1,6 @@
-# .bashrc
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
+################################################################################
+################################################################################
+################################################################################
 
 # User specific aliases and functions
 TOOLS=/home/chenli/Documents/tools
@@ -27,10 +24,9 @@ export TERM=xterm-256color
 export no_proxy=127.0.0.1
 alias startemacs="emacs --daemon"
 alias killemacs="emacsclient -e '(kill-emacs)'"
-alias ls='ls --color=auto'
-alias sh='/bin/bash'
+
+### command prompt format
 ip=`ifconfig | grep 'inet addr' | cut -d: -f2 | awk '{print $1}' | grep -v '127.0.0.1' | head -n1`
-ip=`ifconfig | grep 'inet ' | awk '{print $2}' | grep -v '127.0.0.1' | head -n1`
 PS1="\u@${ip}:\w$ "
 
 ### open file while checking if it exists
