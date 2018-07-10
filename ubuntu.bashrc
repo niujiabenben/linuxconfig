@@ -16,7 +16,7 @@ export TERM=xterm-256color
 export no_proxy=127.0.0.1
 export ALTERNATE_EDITOR=""
 export EDITOR='emacsclient -t'
-export VISUAL='emacsclient -c'
+export VISUAL='emacsclient -t'
 
 ### command prompt format
 ip=`ifconfig | grep 'inet ' | awk '{print $2}' | grep -v '127.0.0.1' | head -n1`
@@ -97,3 +97,12 @@ rm() {
         fi
     done
 }
+
+### start autokey
+start_autokey() {
+    NUM=`ps xuf | grep python | grep autokey | wc -l`
+    if [ $NUM -eq 0 ]; then
+        autokey >/dev/null 2>&1 &
+    fi
+}
+start_autokey
