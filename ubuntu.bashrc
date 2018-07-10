@@ -12,15 +12,35 @@ export PATH=/usr/local/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 ### command settings
-export EDITOR=emacs
 export TERM=xterm-256color
 export no_proxy=127.0.0.1
-alias startemacs="emacs --daemon"
-alias killemacs="emacsclient -e '(kill-emacs)'"
+export ALTERNATE_EDITOR=""
+export EDITOR='emacsclient -t'
+export VISUAL='emacsclient -c'
 
 ### command prompt format
 ip=`ifconfig | grep 'inet ' | awk '{print $2}' | grep -v '127.0.0.1' | head -n1`
 PS1="\u@${ip}:\w$ "
+
+### start emacs server if no emacs server is running
+startemacs() {
+    NUM=`ps xuf | grep emacs | grep daemon | wc -l`
+    if [ $NUM -eq 0 ]; then
+        emacs --daemon
+    else
+        echo "emacs server is already started."
+    fi
+}
+
+### kill emacs server if emacs server is running
+killemacs() {
+    NUM=`ps xuf | grep emacs | grep daemon | wc -l`
+    if [ $NUM -eq 0 ]; then
+        echo "emacs server is already killed."
+    else
+        emacsclient -e '(kill-emacs)'
+    fi
+}
 
 ### open file while checking if it exists
 e() {
