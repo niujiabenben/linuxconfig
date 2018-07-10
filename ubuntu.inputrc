@@ -5,3 +5,4 @@ set bell-style none
 ### inside the 1st argument to the readline specific functions.
 
 "\C-H": backward-kill-word      ### C-backspace
+"\e[z5c": backward-kill-word    ### C-backspace
