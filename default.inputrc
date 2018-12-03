@@ -21,3 +21,7 @@ set bell-style none
 "\e[z3c": backward-kill-word    ### M-backspace
 "\e[3;5~": kill-word            ### C-delete
 "\e[3;3~": kill-word            ### M-delete
+
+### for Ubuntu (直接使用Ubuntu系统, 并非通过SSH连接Ubuntu服务器)
+"\C-H": backward-kill-word      ### C-backspace
+"\e[z5c": backward-kill-word    ### C-backspace

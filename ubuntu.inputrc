@@ -1,8 +1,0 @@
-### bell-style的取值范围是：none, visible, audible
-set bell-style none
-
-### All of the following map the escape sequence of the value contained
-### inside the 1st argument to the readline specific functions.
-
-"\C-H": backward-kill-word      ### C-backspace
-"\e[z5c": backward-kill-word    ### C-backspace

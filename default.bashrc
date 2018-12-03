@@ -89,17 +89,17 @@ rm() {
             mkdir -p ${recycle}/${stamp}
             ### avoid name conflict
             name=`basename $i`
-            path=${recycle}/${stamp}/${name}
+            dstpath=${recycle}/${stamp}/${name}
             count=2
-            while [ -e ${path} ]; do
-                path=${recycle}/${stamp}/${name}.${count}
+            while [ -e ${dstpath} ]; do
+                dstpath=${recycle}/${stamp}/${name}.${count}
                 count=$((count + 1))
             done
-            mv $i ${path}
+            mv $i ${dstpath}
             ### unlink if necessary
-            if [ -d ${path} ]; then
-                if [ `find ${path} -type l | wc -l` -gt 0 ]; then
-                    find ${path} -type l | xargs -n1 unlink
+            if [ -d ${dstpath} ]; then
+                if [ `find ${dstpath} -type l | wc -l` -gt 0 ]; then
+                    find ${dstpath} -type l | xargs -n1 unlink
                 fi
             fi
         fi
@@ -110,3 +110,12 @@ rm() {
 if [[ -s /home/chenli/.autojump/etc/profile.d/autojump.sh ]]; then
     source /home/chenli/.autojump/etc/profile.d/autojump.sh
 fi
+
+### start autokey (直接使用Ubuntu系统, 并非通过SSH连接Ubuntu服务器)
+start_autokey() {
+    NUM=`ps xuf | grep python | grep autokey | wc -l`
+    if [ $NUM -eq 0 ]; then
+        autokey >/dev/null 2>&1 &
+    fi
+}
+# start_autokey
