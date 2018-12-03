@@ -2,7 +2,7 @@
 ################################################################################
 ################################################################################
 
-# User specific aliases and functions
+### User specific aliases and functions
 TOOLS=/home/chenli/Documents/tools
 
 ### PATH settings
@@ -22,12 +22,33 @@ export LD_LIBRARY_PATH=$TOOLS/protobuf/lib:$LD_LIBRARY_PATH
 ### command settings
 export TERM=xterm-256color
 export no_proxy=127.0.0.1
-alias startemacs="emacs --daemon"
-alias killemacs="emacsclient -e '(kill-emacs)'"
+export ALTERNATE_EDITOR=""
+export EDITOR='emacsclient -t'
+export VISUAL='emacsclient -t'
 
 ### command prompt format
-ip=`ifconfig | grep 'inet addr' | cut -d: -f2 | awk '{print $1}' | grep -v '127.0.0.1' | head -n1`
-PS1="\u@${ip}:\w$ "
+IP=`ifconfig | grep broadcast | awk '{print $2}' | awk 'END {print}'`
+PS1="\[\e[36;1m\]\u\[\e[37;1m\]@\[\e[32;1m\]${IP}\[\e[37;1m\]:\[\e[33;1m\]\w\[\e[37;0m\]$ "
+
+### start emacs server if no emacs server is running
+startemacs() {
+    NUM=`ps xuf | grep 'emacs --daemon' | wc -l`
+    if [ $NUM -le 1 ]; then
+        emacs --daemon
+    else
+        echo "emacs server is already started."
+    fi
+}
+
+### kill emacs server if emacs server is running
+killemacs() {
+    NUM=`ps xuf | grep 'emacs --daemon' | wc -l`
+    if [ $NUM -le 1 ]; then
+        echo "emacs server is already killed."
+    else
+        emacsclient -e '(kill-emacs)'
+    fi
+}
 
 ### open file while checking if it exists
 e() {
@@ -84,3 +105,8 @@ rm() {
         fi
     done
 }
+
+### autojump setting
+if [[ -s /home/chenli/.autojump/etc/profile.d/autojump.sh ]]; then
+    source /home/chenli/.autojump/etc/profile.d/autojump.sh
+fi
