@@ -3,7 +3,7 @@
 ################################################################################
 
 ### User specific aliases and functions
-TOOLS=/home/chenli/Documents/tools
+TOOLS=${HOME}/Documents/tools
 
 ### PATH settings
 export PATH=/usr/local/bin:$PATH
@@ -82,7 +82,7 @@ ev() {
 
 ### avoid unintentional removal
 rm() {
-    recycle="/home/chenli/.recycle"
+    recycle="${HOME}/.recycle"
     for i in $*; do
         if [[ $i != -* ]]; then
             stamp=`date +%Y-%m-%d`
@@ -107,8 +107,8 @@ rm() {
 }
 
 ### autojump setting
-if [[ -s /home/chenli/.autojump/etc/profile.d/autojump.sh ]]; then
-    source /home/chenli/.autojump/etc/profile.d/autojump.sh
+if [[ -s ${HOME}/.autojump/etc/profile.d/autojump.sh ]]; then
+    source ${HOME}/.autojump/etc/profile.d/autojump.sh
 fi
 
 ### start autokey (直接使用Ubuntu系统, 并非通过SSH连接Ubuntu服务器)

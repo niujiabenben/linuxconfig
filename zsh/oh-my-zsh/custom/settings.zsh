@@ -1,8 +1,9 @@
 ### User specific aliases and functions
-TOOLS=/home/chenli/Documents/tools
+TOOLS=${HOME}/Documents/tools
 
 ### PATH settings
 export PATH=/usr/local/bin:$PATH
+export PATH=${TOOLS}/emacs/bin:$PATH
 
 ### LD_LIBRARY_PATH settings
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
