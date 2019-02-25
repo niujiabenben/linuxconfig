@@ -69,6 +69,7 @@ configure_zsh_env() {
     cp ${ROOT}/zsh/default.bash_profile ~/.bash_profile
     cp ${ROOT}/zsh/default.zshrc        ~/.zshrc
     cp ${ROOT}/zsh/oh-my-zsh            ~/.oh-my-zsh -rf
+    cp ${ROOT}/default.gitconfig        ~/.gitconfig
 }
 
 ################################################################################
