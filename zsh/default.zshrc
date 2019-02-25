@@ -36,7 +36,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -103,4 +103,6 @@ if [[ -s ${HOME}/.autojump/etc/profile.d/autojump.sh ]]; then
 fi
 
 ### annaconda setting
-# source ${HOME}/Documents/tools/anaconda3/etc/profile.d/conda.sh
+if [[ -s ${HOME}/Documents/tools/anaconda3/etc/profile.d/conda.sh ]]; then
+    source ${HOME}/Documents/tools/anaconda3/etc/profile.d/conda.sh
+fi

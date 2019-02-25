@@ -50,7 +50,7 @@ ev() {
 
 ### avoid unintentional removal
 rm() {
-    recycle="/home/chenli/.recycle"
+    recycle="${HOME}/.recycle"
     for i in $*; do
         if [[ $i != -* ]]; then
             stamp=`date +%Y-%m-%d`

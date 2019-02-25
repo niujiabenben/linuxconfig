@@ -23,8 +23,8 @@ export LD_LIBRARY_PATH=$TOOLS/protobuf/lib:$LD_LIBRARY_PATH
 export TERM=xterm-256color
 export no_proxy=127.0.0.1
 export ALTERNATE_EDITOR=""
-export EDITOR='emacsclient -t'
-export VISUAL='emacsclient -t'
+# export EDITOR='emacsclient -t'
+# export VISUAL='emacsclient -t'
 
 ### command prompt format
 IP=`ifconfig | grep broadcast | awk '{print $2}' | awk 'END {print}'`
