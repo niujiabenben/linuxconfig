@@ -1,7 +1,7 @@
 # Put your custom themes in this folder.
 # Example:
 
-IP=`ifconfig | grep broadcast | awk '{print $2}' | awk 'END {print}'`
+IP=`hostname -I | awk '{print $1}'`
 PROMPT_SIMPLE="%n@${IP}:%~ "
 PROMPT_COMPLEX="\
 %{$fg[cyan]%}%n\
