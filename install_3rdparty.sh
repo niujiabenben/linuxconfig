@@ -123,6 +123,36 @@ install_boost_from_source() {
     ./b2 cxxflags=-fPIC cflags=-fPIC --build-dir=build -j${THREADS} variant=release install
 }
 
+install_ffmpeg_from_source() {
+    if [ -e ${TOOLS}/ffmpeg ]; then
+        echo "ffmpeg has already been installed." && return 0
+    fi
+
+    URL="https://ffmpeg.org/releases/ffmpeg-3.4.5.tar.bz2"
+    NAME="ffmpeg-3.4.5.tar.bz2"
+    MD5="1c608d4b8cf7f1f5e0dbe7a795ae7f5b"
+    download_file ${URL} ${NAME} ${MD5}
+
+    TEMP=${NAME%.tar.bz2}
+    cd ${CACHE} && tar jxvf ${NAME} && cd ${TEMP}
+    sudo apt install autoconf automake build-essential libtool libass-dev
+    sudo apt install libfreetype6-dev libvorbis-dev texinfo zlib1g-dev
+    sudo apt install nasm yasm libx264-dev libx265-dev libnuma-dev libvpx-dev
+    sudo apt install libfdk-aac-dev libmp3lame-dev libopus-dev
+    ./configure \
+        --prefix=${TOOLS}/ffmpeg \
+        --enable-gpl \
+        --enable-libfdk-aac \
+        --enable-libfreetype \
+        --enable-libmp3lame \
+        --enable-libopus \
+        --enable-libvpx \
+        --enable-libx264 \
+        --enable-libx265 \
+        --enable-nonfree
+    make -j${THREADS} && make install
+}
+
 ################################################################################
 ################################################################################
 ################################################################################
@@ -132,3 +162,4 @@ install_boost_from_source() {
 # install_jpeg_turbo_from_source
 # install_protobuf_from_source
 # install_boost_from_source
+# install_ffmpeg_from_source
