@@ -46,6 +46,12 @@ install_opencv_from_source() {
     MD5="9e9ebe9c1fe98c468f6e53f5c3c49716"
     download_file ${URL} ${NAME} ${MD5}
 
+    ### if you want to build with your own ffmpeg version
+    # TOOLS=/home/chenli/Documents/tools
+    # export LD_LIBRARY_PATH=${TOOLS}/ffmpeg/lib/
+    # export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${TOOLS}/ffmpeg/lib/pkgconfig
+    # export PKG_CONFIG_LIBDIR=${PKG_CONFIG_LIBDIR}:${TOOLS}/ffmpeg/lib
+
     TEMP=${NAME%.zip}
     cd ${CACHE} && unzip ${NAME} && cd ${TEMP}
     sudo apt install build-essential cmake git pkg-config
@@ -139,7 +145,10 @@ install_ffmpeg_from_source() {
     sudo apt install libfreetype6-dev libvorbis-dev texinfo zlib1g-dev
     sudo apt install nasm yasm libx264-dev libx265-dev libnuma-dev libvpx-dev
     sudo apt install libfdk-aac-dev libmp3lame-dev libopus-dev
+    ### compile with shared & -fpic
     ./configure \
+        --enable-shared \
+        --extra-cflags="-fPIC" \
         --prefix=${TOOLS}/ffmpeg \
         --enable-gpl \
         --enable-libfdk-aac \
