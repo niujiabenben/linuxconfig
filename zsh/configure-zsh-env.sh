@@ -66,10 +66,10 @@ configure_zsh_env() {
         git clone https://github.com/robbyrussell/oh-my-zsh.git ${HOME}/.oh-my-zsh
     fi
 
-    cp ${ROOT}/default.bash_profile ~/.bash_profile
     cp ${ROOT}/default.zshrc        ~/.zshrc
     cp ${ROOT}/oh-my-zsh/custom     ~/.oh-my-zsh -rf
     cp ${ROOT}/../default.gitconfig ~/.gitconfig
+    echo "\n" >> ~/.bashrc && cat ${ROOT}/default.bash_profile >> ~/.bashrc
 }
 
 ################################################################################
