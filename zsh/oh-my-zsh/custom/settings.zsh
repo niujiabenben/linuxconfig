@@ -14,7 +14,7 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 ### command settings
 export TERM=xterm-256color
 export no_proxy=127.0.0.1
-export ALTERNATE_EDITOR=""
+# export ALTERNATE_EDITOR=""
 # export EDITOR='emacsclient -t'
 # export VISUAL='emacsclient -t'
 
