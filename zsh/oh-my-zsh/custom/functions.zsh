@@ -50,7 +50,14 @@ ev() {
 
 ### avoid unintentional removal
 rm() {
-    recycle="${HOME}/.recycle"
+    realpwd=$(realpath "${PWD}")
+    recycle=$(realpath "${HOME}/.recycle")
+    ### if we are already in ${recycle}, we execute the original command
+    if [[ "${realpwd}" == "${recycle}" ]] || [[ "${realpwd}" == "${recycle}"/* ]]; then
+        /bin/rm $*
+        return 0
+    fi
+    
     for i in $*; do
         if [[ $i != -* ]]; then
             stamp=`date +%Y-%m-%d`
