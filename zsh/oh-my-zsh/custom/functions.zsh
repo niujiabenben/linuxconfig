@@ -1,3 +1,5 @@
+#! /bin/zsh
+
 ### start emacs server if no emacs server is running
 startemacs() {
     local NUM=`ps xuf | grep 'emacs --daemon' | wc -l`
@@ -57,7 +59,7 @@ rm() {
         /bin/rm $*
         return 0
     fi
-    
+
     for i in $*; do
         if [[ $i != -* ]]; then
             stamp=`date +%Y-%m-%d`
@@ -79,4 +81,8 @@ rm() {
             fi
         fi
     done
+}
+
+conn() {
+    ssh ainfinit@tunnel.ainfinit.com -p $1
 }
