@@ -4,7 +4,7 @@
 ###   https://stackoverflow.com/questions/5407916/zsh-zle-shift-selection
 
 r-delregion() {
-    if ((REGION_ACTIVE)); then
+    if ((REGION_ACTIVE)) then
         zle kill-region
     else
         local widget_name=$1
@@ -42,6 +42,15 @@ r-bind-key() {
     "
 }
 
+### only for copy-region-as-kill
+r-copyregion() {
+    if ((REGION_ACTIVE)) then
+       zle copy-region-as-kill
+       ((REGION_ACTIVE = 0))
+    fi
+}
+zle -N r-copyregion
+
 ################################# key binding ##################################
 
 ### 常规键, 按下之后取消选择
@@ -73,3 +82,8 @@ r-bind-key  delete       "\e[3~"    delregion  delete-char
 r-bind-key  backspace    "\b"       delregion  backward-delete-char
 r-bind-key  c-backspace  "\e[aF"    delregion  backward-kill-word
 r-bind-key  c-delete     "\e[a3~"   delregion  kill-word
+
+### 其他按键, 模拟emacs
+### zsh中, 先按C-v, 再按目标键可以得到该键的字符序列
+bindkey  "^w"   kill-region   #  C-w
+bindkey  "^[w"  r-copyregion  #  M-w
