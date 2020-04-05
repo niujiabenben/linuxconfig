@@ -58,6 +58,8 @@ r-bind-key  left     "\eOD"    deselect  backward-char
 r-bind-key  right    "\eOC"    deselect  forward-char
 r-bind-key  c-left   "\e[D"    deselect  backward-word
 r-bind-key  c-right  "\e[C"    deselect  forward-word
+r-bind-key  m-left   "\e\eOD"  deselect  backward-word
+r-bind-key  m-right  "\e\eOC"  deselect  forward-word
 r-bind-key  home     "\e[1~"   deselect  beginning-of-line
 r-bind-key  end      "\e[4~"   deselect  end-of-line
 r-bind-key  c-home   "\e[a1~"  deselect  beginning-of-line
