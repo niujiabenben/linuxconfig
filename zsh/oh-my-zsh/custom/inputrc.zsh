@@ -85,8 +85,7 @@ r-bind-key  backspace    "\b"       delregion  backward-delete-char
 r-bind-key  c-backspace  "\e[aF"    delregion  backward-kill-word
 r-bind-key  c-delete     "\e[a3~"   delregion  kill-word
 r-bind-key  m-backspace  "\e[cF"    delregion  backward-kill-word
-r-bind-key  m-delete     "\e[c3~"   delregion  kill-word
-
+r-bind-key  m-delete     "\e\e[3~"  delregion  kill-word
 
 ### 其他按键, 模拟emacs
 ### zsh中, 先按C-v, 再按目标键可以得到该键的字符序列
