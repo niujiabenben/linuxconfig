@@ -97,6 +97,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+autoload -Uz compinit; compinit;
+bindkey "^Xa" _expand_alias
+zstyle ':completion:*' completer _expand_alias _complete _ignored
+zstyle ':completion:*' regular true
+
+alias ld=LD_LIBRARY_PATH
+alias aw="awk -F'' '{print \$2}'"
+
 ### autojump setting
 if [[ -s ${HOME}/.autojump/etc/profile.d/autojump.sh ]]; then
     source ${HOME}/.autojump/etc/profile.d/autojump.sh
