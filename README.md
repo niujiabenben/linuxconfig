@@ -38,3 +38,8 @@ mkdir -p ~/.jupyter && cp ./jupyter_notebook_config.py ~/.jupyter
 报错: `configure: error: pkg-config found alsa, but it does not compile.`<br>
 解决: `sudo apt-get install libsdl2-dev`
 
+报错: `xml.c:23:10: fatal error: libxml/tree.h: No such file or directory`<br>
+解决: `sudo apt install libxml2-dev`
+
+报错: `lcms.c:23:10: fatal error: lcms2.h: No such file or directory`<br>
+解决: `sudo apt install liblcms2-dev`
