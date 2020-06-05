@@ -31,3 +31,10 @@ mkdir -p ~/.jupyter && cp ./jupyter_notebook_config.py ~/.jupyter
 设置登录密码: `jupyter notebook password`, 并将值放入c.NotebookApp.password字段
 
 默认端口为8889, 也可以修改, 字段为: c.NotebookApp.port
+
+
+## emacs编译问题
+
+报错: `configure: error: pkg-config found alsa, but it does not compile.`<br>
+解决: `sudo apt-get install libsdl2-dev`
+
