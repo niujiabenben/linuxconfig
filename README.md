@@ -43,3 +43,16 @@ mkdir -p ~/.jupyter && cp ./jupyter_notebook_config.py ~/.jupyter
 
 报错: `lcms.c:23:10: fatal error: lcms2.h: No such file or directory`<br>
 解决: `sudo apt install liblcms2-dev`
+
+
+## build clang from source
+
+```shell
+mkdir build && cd build
+cmake -G "Unix Makefiles" \
+      -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly" \
+      -DCMAKE_INSTALL_PREFIX=${HOME}/Documents/tools/clang \
+      -DCMAKE_BUILD_TYPE=Release \
+      ../llvm
+make -j32 && make install
+```
