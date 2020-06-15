@@ -48,6 +48,7 @@ mkdir -p ~/.jupyter && cp ./jupyter_notebook_config.py ~/.jupyter
 ## build clang from source
 
 ```shell
+## get srouce code: https://github.com/llvm/llvm-project/releases
 mkdir build && cd build
 cmake -G "Unix Makefiles" \
       -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;libcxx;libcxxabi;libunwind;lldb;compiler-rt;lld;polly" \
