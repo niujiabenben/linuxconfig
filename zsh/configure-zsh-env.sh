@@ -76,21 +76,16 @@ configure_zsh_env() {
 ################################################################################
 ################################################################################
 
-### step 0: confirm installation method
-apt-cache policy emacs
-exit
-
 ### step 1: install all dependencies
 sudo apt update
 sudo apt install build-essential
 sudo apt install automake autoconf
-sudo apt install clang libclang-dev
 sudo apt install git wget curl cmake zsh cmake-curses-gui
 # sudo apt install emacs
 
 ### step 2: install packages
 # install_from_source emacs
-# install_from_source autojump
+install_from_source autojump
 
 ### step 3: configure zsh environment
 configure_zsh_env
