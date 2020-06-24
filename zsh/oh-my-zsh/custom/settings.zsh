@@ -11,6 +11,7 @@ export PATH=${TOOLS}/global/bin:$PATH
 
 ### LD_LIBRARY_PATH settings
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=${TOOLS}/clang/lib:$LD_LIBRARY_PATH
 
 ### used in emacs python mode
 export PYTHONENV=${TOOLS}/anaconda3/envs/pytorch/bin/python
