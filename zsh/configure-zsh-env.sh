@@ -85,7 +85,7 @@ sudo apt install git wget curl cmake zsh cmake-curses-gui
 
 ### step 2: install packages
 # install_from_source emacs
-install_from_source autojump
+# install_from_source autojump
 
 ### step 3: configure zsh environment
 configure_zsh_env
