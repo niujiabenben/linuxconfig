@@ -31,7 +31,7 @@ install_emacs_from_source() {
 
     TEMP=${NAME%.tar.gz}
     cd ${CACHE} && tar zxvf ${NAME} && cd ${TEMP}
-    sudo apt-get install libncurses-dev
+    sudo apt-get install -y libncurses-dev
     ./configure --without-x --with-gnutls=no --prefix=${TOOLS}/emacs
     make -j${THREADS} && make install
 }
@@ -78,9 +78,9 @@ configure_zsh_env() {
 
 ### step 1: install all dependencies
 sudo apt update
-sudo apt install build-essential
-sudo apt install automake autoconf
-sudo apt install git wget curl cmake zsh cmake-curses-gui
+sudo apt install -y build-essential
+sudo apt install -y automake autoconf
+sudo apt install -y git wget curl cmake zsh cmake-curses-gui
 # sudo apt install emacs
 
 ### step 2: install packages
