@@ -24,9 +24,9 @@ install_emacs_from_source() {
         echo "emacs has already been installed." && return 0
     fi
 
-    URL="https://mirrors.ustc.edu.cn/gnu/emacs/emacs-26.3.tar.gz"
-    NAME="emacs-26.3.tar.gz"
-    MD5="506d51cfe2d180687ab01514b98bd96c"
+    URL="https://mirrors.ustc.edu.cn/gnu/emacs/emacs-27.1.tar.gz"
+    NAME="emacs-27.1.tar.gz"
+    MD5="9a044860d24f38859deb3f878265f661"
     download_file ${URL} ${NAME} ${MD5}
 
     TEMP=${NAME%.tar.gz}
