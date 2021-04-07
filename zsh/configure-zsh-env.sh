@@ -34,7 +34,7 @@ install_emacs_from_source() {
     sudo apt install -y texinfo libx11-dev libxpm-dev libjpeg-dev
     sudo apt install -y libgif-dev libtiff-dev libgtk2.0-dev
     sudo apt install -y libxpm-dev libpng-dev libncurses-dev
-    ./configure --prefix=${TOOLS}/emacs
+    ./configure --with-gnutls=ifavailable --prefix=${TOOLS}/emacs
     make -j${THREADS} && make install
 }
 
