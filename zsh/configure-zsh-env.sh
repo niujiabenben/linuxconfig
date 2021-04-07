@@ -24,15 +24,17 @@ install_emacs_from_source() {
         echo "emacs has already been installed." && return 0
     fi
 
-    URL="https://mirrors.ustc.edu.cn/gnu/emacs/emacs-27.1.tar.gz"
-    NAME="emacs-27.1.tar.gz"
-    MD5="9a044860d24f38859deb3f878265f661"
+    URL="https://mirrors.ustc.edu.cn/gnu/emacs/emacs-27.2.tar.gz"
+    NAME="emacs-27.2.tar.gz"
+    MD5="6c7f1583d043fffff8dc892a1f8f7b83"
     download_file ${URL} ${NAME} ${MD5}
 
     TEMP=${NAME%.tar.gz}
     cd ${CACHE} && tar zxvf ${NAME} && cd ${TEMP}
-    sudo apt-get install -y libncurses-dev
-    ./configure --without-x --with-gnutls=no --prefix=${TOOLS}/emacs
+    sudo apt install -y texinfo libx11-dev libxpm-dev libjpeg-dev
+    sudo apt install -y libgif-dev libtiff-dev libgtk2.0-dev
+    sudo apt install -y libxpm-dev libpng-dev libncurses-dev
+    ./configure --prefix=${TOOLS}/emacs
     make -j${THREADS} && make install
 }
 
